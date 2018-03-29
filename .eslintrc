@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "script"
+  }
+}

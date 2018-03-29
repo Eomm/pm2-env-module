@@ -1,0 +1,41 @@
+{
+  "name": "pm2-env-module",
+  "version": "0.0.1",
+  "description": "Module to auto-rename .env file of process",
+  "main": "app.js",
+  "dependencies": {
+    "pm2": "latest",
+    "pmx": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.15.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manuel Spigolon <behemoth89@gmail.com> (https://github.com/Eomm)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eomm/pm2-env-module"
+  },
+  "bugs": {
+    "url": "https://github.com/Eomm/pm2-env-module/issues"
+  },
+  "homepage": "https://github.com/Eomm/pm2-env-module",
+  "license": "MIT",
+  "apps": [
+    {
+      "name": "pm2-env-module",
+      "script": "app.js",
+      "max_memory_restart": "50M"
+    }
+  ],
+  "config": {
+    "envFilename": ".env",
+    "envRelativePath": "",
+    "envVariableName": "NODE_ENV"
+  }
+}
