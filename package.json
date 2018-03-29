@@ -3,6 +3,13 @@
   "version": "0.0.1",
   "description": "Module to auto-rename .env file of process",
   "main": "app.js",
+  "keywords": [
+    "pm2",
+    "module",
+    "env",
+    "dotenv",
+    "enviroment"
+  ],
   "dependencies": {
     "pm2": "latest",
     "pmx": "latest"
