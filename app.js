@@ -24,7 +24,16 @@ const pm2EnvModule = (config) => {
         console.log(`Copy ${envFileToApply} to ${envFile}`);
 
         fsUtils.existFile(envFileToApply)
-          .then(() => fsUtils.copyFile(envFileToApply, envFile))
+          .then(() => {
+            if (config.buildEnvFile === true) {
+              const envText = Object.entries(process.pm2_env)
+                .filter(([, value]) => typeof value !== 'object')
+                .map(([key, value]) => `${key}=${value}`)
+                .join('\n');
+              return fsUtils.writeTextFile(envFile, envText);
+            }
+            return fsUtils.copyFile(envFileToApply, envFile);
+          })
           .then(renamed => console.log('env copied:', renamed))
           .catch(renameError => console.error('env error', renameError));
       });

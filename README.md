@@ -43,6 +43,7 @@ If some error occurs, it will be logged.
 | `envFilename`     | `.env`     | The file name of the env file
 | `envRelativePath` | ``         | An optional path to add to the script root path
 | `envVariableName` | `NODE_ENV` | The env variable that contains the name of the enviroment execution
+| `buildEnvFile`    | `false`    | Generate an env file with the data set on the ecosystem's pm2 file. If will ignore other `.env*` files
 
 
 ### Change values
@@ -53,6 +54,7 @@ After having installed the module you have to type: `pm2 set pm2-env-module:<par
 pm2 set pm2-env-module:envFilename configFile
 pm2 set pm2-env-module:envRelativePath /config
 pm2 set pm2-env-module:envVariableName ENVIROMENT
+pm2 set pm2-env-module:buildEnvFile true
 ```
 
 
