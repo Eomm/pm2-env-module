@@ -11,6 +11,7 @@
     "enviroment"
   ],
   "dependencies": {
+    "pino": "^4.15.4",
     "pm2": "latest",
     "pmx": "latest"
   },
@@ -44,6 +45,7 @@
     "envFilename": ".env",
     "envRelativePath": "",
     "envVariableName": "NODE_ENV",
-    "buildEnvFile": false
+    "buildEnvFile": false,
+    "logLevel": "debug"
   }
 }

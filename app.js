@@ -4,24 +4,31 @@ const path = require('path');
 const pmx = require('pmx');
 const pm2 = require('pm2');
 const fsUtils = require('./lib/fs-utils');
+const pino = require('pino');
 
 
 const pm2EnvModule = (config) => {
+  const log = pino({
+    name: 'pm2-env-module',
+    level: config.logLevel,
+    prettyPrint: true,
+  });
   pm2.list((err, processList) => {
     if (err) {
-      console.error(err.stack || err);
+      log.error(err.stack || err);
       process.exit(2);
     }
     processList
       .filter(process => process.name !== 'pm2-env-module')
       .forEach((process) => {
+        log.debug(`Analize envs for process ${process.name}`);
         const processRootPath = path.dirname(process.pm2_env.pm_exec_path);
 
         const currentEnv = process.pm2_env[config.envVariableName];
 
         const envFileToApply = path.resolve(processRootPath, config.envRelativePath, `${config.envFilename}.${currentEnv}`);
         const envFile = path.resolve(processRootPath, config.envRelativePath, config.envFilename);
-        console.log(`Copy ${envFileToApply} to ${envFile}`);
+        log.info(`Copy ${envFileToApply} to ${envFile}`);
 
         fsUtils.existFile(envFileToApply)
           .then(() => {
@@ -34,8 +41,8 @@ const pm2EnvModule = (config) => {
             }
             return fsUtils.copyFile(envFileToApply, envFile);
           })
-          .then(renamed => console.log('env copied:', renamed))
-          .catch(renameError => console.error('env error', renameError));
+          .then(renamed => log.info('env copied: %s', renamed))
+          .catch(renameError => log.error(renameError, 'env error'));
       });
   });
 };
