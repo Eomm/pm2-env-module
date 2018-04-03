@@ -46,6 +46,6 @@
     "envRelativePath": "",
     "envVariableName": "NODE_ENV",
     "buildEnvFile": false,
-    "logLevel": "debug"
+    "logLevel": "info"
   }
 }
