@@ -1,6 +1,6 @@
 {
   "name": "pm2-env-module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Module to auto-rename .env file of process",
   "main": "app.js",
   "keywords": [
