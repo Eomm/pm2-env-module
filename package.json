@@ -16,10 +16,10 @@
     "pmx": "latest"
   },
   "devDependencies": {
-    "eslint": "^4.19.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jest": "^21.15.0"
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^21.27.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
